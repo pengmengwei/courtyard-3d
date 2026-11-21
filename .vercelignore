@@ -1,0 +1,7 @@
+node_modules
+dist
+.vercel
+screenshots
+scripts
+*.command
+README.md

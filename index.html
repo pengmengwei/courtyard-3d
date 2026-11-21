@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#e9e6dc" />
+    <meta name="description" content="依据四张实景照片重建的山居庭院，支持自由漫游、光照切换和原图对照。" />
+    <title>山院 · 3D 实景重建</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene" aria-label="可交互的山居庭院三维场景"></canvas>
+      <div class="grain" aria-hidden="true"></div>
+
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="返回庭院全景">
+          <span class="brand-mark">山</span>
+          <span><b>山院</b><small>COURTYARD STUDY · 01</small></span>
+        </a>
+        <div class="top-actions">
+          <span class="live"><i></i> 实时 3D</span>
+          <button class="text-button" id="references-button" aria-haspopup="dialog"><span class="button-icon">▦</span> 原图对照</button>
+          <button class="icon-button" id="capture-button" title="保存当前视角" aria-label="保存当前视角">↧</button>
+        </div>
+      </header>
+
+      <aside class="story-panel">
+        <p class="eyebrow">A QUIET PLACE, RECONSTRUCTED</p>
+        <h1>把山间的一日，<br />留在院子里。</h1>
+        <p class="intro">依据实景照片重建建筑、器物与植被。<br />小青瓦、竹篱与藤编，留住材料本来的质感。</p>
+        <div class="story-rule"></div>
+        <button id="tour-button" class="tour-button"><span>开始院落导览</span><b>↗</b></button>
+      </aside>
+
+      <aside class="light-panel" aria-label="光照控制">
+        <div class="panel-heading"><span>日光</span><small id="time-label">14:30</small></div>
+        <div class="sun-glyph" aria-hidden="true"><i></i><span></span></div>
+        <input id="time-slider" type="range" min="8" max="20" step="0.1" value="14.5" aria-label="一天中的时间" />
+        <div class="range-labels"><span>08:00</span><span>20:00</span></div>
+        <div class="light-presets">
+          <button data-time="14.5" class="active">午后</button>
+          <button data-time="17.6">黄昏</button>
+          <button data-time="20">夜晚</button>
+        </div>
+      </aside>
+
+      <div class="scene-caption"><span id="view-index">01</span><div><b id="view-title">庭院全景</b><small id="view-subtitle">COURTYARD OVERVIEW</small></div></div>
+
+      <nav class="view-switcher" aria-label="预设视角">
+        <button class="active" data-view="overview"><span>01</span>庭院全景</button>
+        <button data-view="facade"><span>02</span>建筑立面</button>
+        <button data-view="tea"><span>03</span>户外茶歇</button>
+        <button data-view="gate"><span>04</span>竹篱木门</button>
+      </nav>
+
+      <div class="control-hint"><span class="mouse-icon" aria-hidden="true"></span><span>拖拽旋转</span><i></i><span>滚轮缩放</span><i></i><span>右键平移</span></div>
+      <div class="utility-buttons">
+        <button id="labels-button" class="icon-button" title="显示物件标注" aria-label="显示物件标注" aria-pressed="false">⌖</button>
+        <button id="rotate-button" class="icon-button" title="自动环绕" aria-label="自动环绕" aria-pressed="false">↻</button>
+        <button id="reset-button" class="icon-button" title="重置视角" aria-label="重置视角">⌂</button>
+      </div>
+      <div id="labels" aria-hidden="true"></div>
+      <div id="toast" role="status"></div>
+
+      <div class="loading" id="loading"><span class="loading-mark">山</span><p>正在砌筑庭院</p><div><i></i></div></div>
+
+      <dialog id="reference-dialog" class="reference-dialog">
+        <div class="reference-head"><div><small>REFERENCE PHOTOGRAPHS</small><h2>从实景，到空间</h2></div><button id="close-references" class="icon-button" aria-label="关闭原图">×</button></div>
+        <div class="reference-body">
+          <div class="reference-main"><img id="reference-image" src="/references/1.jpeg" alt="庭院实景参考照片" /><span id="reference-count">01 / 04</span></div>
+          <div class="reference-notes"><p id="reference-note">正立面 · 小青瓦、白色圆柱与深色门窗</p><div class="reference-thumbs">
+            <button class="active" data-photo="0"><img src="/references/1.jpeg" alt="建筑正立面" /><span>01</span></button>
+            <button data-photo="1"><img src="/references/2.jpeg" alt="户外家具细节" /><span>02</span></button>
+            <button data-photo="2"><img src="/references/3.jpeg" alt="竹篱木门" /><span>03</span></button>
+            <button data-photo="3"><img src="/references/4.jpeg" alt="庭院植被" /><span>04</span></button>
+          </div><p class="reference-disclaimer">以照片可见部分为重建依据；被遮挡的背面与尺寸作合理推定，并非测绘模型。</p></div>
+        </div>
+      </dialog>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
