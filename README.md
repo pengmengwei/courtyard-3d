@@ -10,6 +10,14 @@
 
 ![山院 3D 场景预览](docs/courtyard-preview.png)
 
+## 度假宣传短片《抵达山院》
+
+[![观看《抵达山院》度假宣传短片](docs/courtyard-film-cover.jpg)](https://github.com/pengmengwei/courtyard-3d/releases/download/v1.0.0/arrive-at-courtyard-web.mp4)
+
+**[▶ 观看流畅版（37 MB）](https://github.com/pengmengwei/courtyard-3d/releases/download/v1.0.0/arrive-at-courtyard-web.mp4) · [下载高质量版（130 MB）](https://github.com/pengmengwei/courtyard-3d/releases/download/v1.0.0/arrive-at-courtyard.mp4)**
+
+30 秒一镜到底：推开木门、沿石板路进入、茶席停留、围炉晚风，直到山谷入夜。画面全部由现有 Three.js 资产与代码动画生成，未使用离线三维工具或生成式图像、视频模型。当前为静音版。
+
 ---
 
 依据四张实景照片（`public/references/`）制作的 Three.js 实时庭院场景。建筑、家具、竹篱、院门与植被全部由几何体构成，石材、青砖、瓦面、木纹、藤编与布料的贴图在浏览器里程序化生成，不依赖外部模型或贴图。
